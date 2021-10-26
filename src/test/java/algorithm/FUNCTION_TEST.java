@@ -69,4 +69,11 @@ public class FUNCTION_TEST {
 			
 	}
 
+	@Test
+	@DisplayName("Cacluate list in sum value")
+	void cacluateListofSumValue() {
+		List<Integer> list = List.of(1,2,5,2,3,4,7,33,11,4422,123,21512,132,21);
+		Integer sum = list.stream().reduce(0, (x,y)->x+y);
+		System.out.println(sum);
+	}
 }
