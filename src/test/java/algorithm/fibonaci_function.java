@@ -2,12 +2,16 @@ package algorithm;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import alorithm.functions.CaculateUtils;
 
 public class fibonaci_function {
 
@@ -73,20 +77,34 @@ public class fibonaci_function {
 	@Test
 	@DisplayName("곱하기")
 	public void function_multiple_mathTest() {
-		List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
-//	Function<Integer,Integer> mathFunction = x -> x * 2;
-	//	list.stream().map(mathFunction).collect(Collectors.toList()).forEach(System.out::println);
-//    System.out.println(result); // [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
-		list.stream().map(multipleFunction()).collect(Collectors.toList()).forEach(System.out::println);
+//		List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+//		list.stream()
+//		//.filter(CaculateUtils::filteredList)
+//		.map(CaculateUtils::multipleFunction)
+//		.collect(Collectors.toList())
+//		.forEach(System.out::println);
 	}
 
-	private Function<Integer,Integer> multipleFunction(){
-		
-		return new Function<Integer,Integer>(){
+//	public static void printList(List<Integer> listOfIntegers, Consumer<Integer> consumer){
+//		  for(Integer integer:listOfIntegers){
+//		    consumer.accept(integer);
+//		  }
+//		 }	
 
+	public static Predicate<Integer> filteredList= new Predicate<Integer>() {
+
+		@Override
+		public boolean test(Integer t) {
+			System.out.println("필터 :  "  +t);
+			return t%2==0;
+		}
+		
+	};
+	public Function<Integer,Integer> multipleFunction(){
+		return new Function<Integer,Integer>(){
 			@Override
 			public Integer apply(Integer t) {
-				return	t * 2;
+				return	t * t;
 			}
 		};
 	}
